@@ -46,4 +46,11 @@ public class EmptyLibraryUnitTest {
     System.out.println(cipher);
     assertEquals(1, 1);
   }
+
+  @Test
+  public void test_cipherAES() throws NoSuchPaddingException, NoSuchAlgorithmException {
+    Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding");
+    System.out.println(cipher);
+    assertEquals(1, 1);
+  }
 }
