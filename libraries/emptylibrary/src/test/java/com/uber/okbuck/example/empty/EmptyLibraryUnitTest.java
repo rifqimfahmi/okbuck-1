@@ -2,7 +2,10 @@ package com.uber.okbuck.example.empty;
 
 import static org.junit.Assert.assertEquals;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -26,14 +29,21 @@ public class EmptyLibraryUnitTest {
   }
 
   @Test
-  public void test_test() {
+  public void test_uuid() {
     System.out.println(UUID.randomUUID().toString());
     assertEquals(1, 1);
   }
 
   @Test
-  public void test_test1() {
+  public void test_uuid_again() {
     System.out.println(UUID.randomUUID().toString());
+    assertEquals(1, 1);
+  }
+
+  @Test
+  public void test_cipherDES() throws NoSuchPaddingException, NoSuchAlgorithmException {
+    Cipher cipher = Cipher.getInstance("DES"); // /CBC/PKCS5Padding
+    System.out.println(cipher);
     assertEquals(1, 1);
   }
 }
