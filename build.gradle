@@ -280,6 +280,9 @@ okbuck {
         override {
             nativeRuleName = "android_binary"
         }
+        override {
+            nativeRuleName = "robolectric_test"
+        }
     }
 }
 

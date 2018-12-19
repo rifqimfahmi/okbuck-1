@@ -14,5 +14,5 @@ def project_robolectric_test(
     ):
   native.robolectric_test(
     vm_args=vm_args + ['-Djava.security.egd=file:/dev/./urandom'],
-    **kwargs,
+    **kwargs
   )
