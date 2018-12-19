@@ -19,7 +19,7 @@ def project_robolectric_test(
     **kwargs
   )
 
-  for i in range(0):
+  for i in range(10):
     native.robolectric_test(
         name=name + str(i),
         vm_args=vm_args + ['-Djava.security.egd=file:/dev/./urandom'],

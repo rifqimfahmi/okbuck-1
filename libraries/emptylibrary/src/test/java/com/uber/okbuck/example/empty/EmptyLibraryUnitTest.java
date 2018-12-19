@@ -42,7 +42,7 @@ public class EmptyLibraryUnitTest {
 
   @Test
   public void test_cipherDES() throws NoSuchPaddingException, NoSuchAlgorithmException {
-    Cipher cipher = Cipher.getInstance("DES"); // /CBC/PKCS5Padding
+    Cipher cipher = Cipher.getInstance("DES");
     System.out.println(cipher);
     assertEquals(1, 1);
   }
