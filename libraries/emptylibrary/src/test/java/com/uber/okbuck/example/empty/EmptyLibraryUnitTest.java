@@ -2,6 +2,7 @@ package com.uber.okbuck.example.empty;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.UUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -22,5 +23,17 @@ public class EmptyLibraryUnitTest {
     assertEquals(
         RuntimeEnvironment.application.getResources().getString(R.string.empty_release_string),
         "empty_release_string");
+  }
+
+  @Test
+  public void test_test() {
+    System.out.println(UUID.randomUUID().toString());
+    assertEquals(1, 1);
+  }
+
+  @Test
+  public void test_test1() {
+    System.out.println(UUID.randomUUID().toString());
+    assertEquals(1, 1);
   }
 }
