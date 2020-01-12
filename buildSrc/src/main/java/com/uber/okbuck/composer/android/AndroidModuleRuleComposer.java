@@ -37,8 +37,8 @@ public final class AndroidModuleRuleComposer extends AndroidBuckRuleComposer {
     libraryDeps.addAll(targets(target.getTargetDeps(SourceSetType.MAIN)));
 
     // Add play core prebuilt aar
-    if (target.getProject().findProject(":play_core") != null) {
-      libraryDeps.add("//play_core:play_core-services");
+    if (target.getProject().findProject(":libraries:play_core") != null) {
+      libraryDeps.add("//libraries/play_core:play_core-services");
     }
 
     List<String> libraryAptDeps = new ArrayList<>();

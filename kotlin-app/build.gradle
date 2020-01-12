@@ -56,7 +56,8 @@ dependencies {
     // Test room auto-value
     implementation "androidx.room:room-runtime:2.2.3"
     kapt "androidx.room:room-compiler:2.2.3"
-    
+
     // Test play_core
-    implementation project(":play_core")
+    implementation project(":libraries:play_core")
+
 }
