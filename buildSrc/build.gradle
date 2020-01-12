@@ -101,7 +101,7 @@ task sourcesJar(type: Jar) {
     classifier = "sources"
 }
 
-def publishVersion = "rifqi-0.0.1"
+def publishVersion = "rifqi-0.0.2"
 
 group = "com.uber"
 version = publishVersion
