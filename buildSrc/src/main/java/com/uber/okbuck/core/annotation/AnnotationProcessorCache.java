@@ -10,6 +10,7 @@ import com.uber.okbuck.core.model.base.Scope;
 import com.uber.okbuck.core.util.ProjectUtil;
 import com.uber.okbuck.extension.ExternalDependenciesExtension;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -27,6 +28,8 @@ import org.gradle.api.artifacts.Dependency;
 public class AnnotationProcessorCache {
   public static final String AUTO_VALUE_GROUP = "com.google.auto.value";
   public static final String AUTO_VALUE_NAME = "auto-value";
+
+  private static final List<String> AV_EXCEPTIONS = Collections.singletonList("room-compiler");
 
   private final Project project;
   private final BuckFileManager buckFileManager;
@@ -114,7 +117,8 @@ public class AnnotationProcessorCache {
     return dependencyToScope
         .entrySet()
         .stream()
-        .filter(entry -> isAutoValueScope(entry.getValue()))
+        .filter(entry -> !AV_EXCEPTIONS.contains(entry.getKey().getName()) &&
+            isAutoValueScope(entry.getValue()))
         .map(Map.Entry::getKey)
         .collect(ImmutableSet.toImmutableSet());
   }
