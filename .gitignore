@@ -14,5 +14,6 @@ buck-out
 .okbuck
 .buckconfig.local
 **/BUCK
+!play_core/BUCK
 
 buildSrc/bintray.properties

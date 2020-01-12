@@ -1,0 +1,7 @@
+android_prebuilt_aar(
+    name = "play_core-services",
+    aar = "play-core-1.6.4-IAR-SNAPSHOT.aar",
+    visibility = [
+        'PUBLIC'
+    ]
+)
