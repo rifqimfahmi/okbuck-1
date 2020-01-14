@@ -101,7 +101,6 @@ getChanges ( ) {
     "expression": ["allof",
         ["type", "f"],
         ["anyof",
-            ["suffix", "sq"],
             ["suffix", "gradle"],
             ["name", ["gradle-wrapper.properties"]]
         ],
