@@ -142,44 +142,7 @@ okbuck {
     resourceUnion = true
     buildToolVersion = config.build.buildTools
     target = "android-${config.build.compileSdk}"
-
-//    extraDepCachesMap << [tools:true]
-//
-//    primaryDexPatterns = [
-//            "app": [
-//                    "^com/uber/okbuck/example/AppShell^",
-//                    "^com/uber/okbuck/example/BuildConfig^",
-//                    "^androidx/multidex/",
-//                    "^com/facebook/buck/android/support/exopackage/",
-//                    "^com/github/promeg/xlog_android/lib/XLogConfig^",
-//                    "^com/squareup/leakcanary/LeakCanary^",
-//                    "^com/uber/okbuck/example/common/Calc^",
-//                    "^com/uber/okbuck/example/common/BuildConfig^",
-//            ]
-//    ]
-//    exopackage = [
-//            "appDevDebug": true
-//    ]
-//    appLibDependencies = [
-//            "appProd": [
-//                    "buck-android-support",
-//                    "androidx.multidex:multidex",
-//                    "libraries/javalibrary:main",
-//                    "libraries/common:paidRelease",
-//            ],
-//            "appDev" : [
-//                    "buck-android-support",
-//                    "androidx.multidex:multidex",
-//                    "libraries/javalibrary:main",
-//                    "libraries/common:freeDebug",
-//            ],
-//            "appDemo": [
-//                    "buck-android-support",
-//                    "androidx.multidex:multidex",
-//                    "libraries/javalibrary:main",
-//                    "libraries/common:paidRelease",
-//            ]
-//    ]
+    
     buckProjects = project.subprojects.findAll { it.name != "plugin" && it.name != "transform-cli" }
 
     lintExclude.put("another-app", ["debug"])
@@ -188,92 +151,20 @@ okbuck {
         sources = true
     }
 
-//    test {
-//        espresso = true
-//        espressoForLibraries = true
-//        robolectric = true
-//        robolectricApis = ["21", "27"]
-//    }
-
     wrapper {
         repo = 'https://github.com/facebook/buck.git'
-//        watch += ["**/*.sq"]
     }
-
-//    kotlin {
-//        version = deps.versions.kotlin
-//    }
-
+    
     lint {
         disabled = true
-//        version = deps.versions.androidTools
-//        jvmArgs = '-Xmx1g'
     }
-
-//    transform {
-//        transforms = [
-//                "appProd": [
-//                        [transform: "com.uber.okbuck.transform.DummyTransform"]
-//                ]
-//
-//        ]
-//    }
 
     jetifier {
         aarOnly = true
         exclude = [
             "androidx.*"
         ]
-//        customConfigFile = "tooling/jetifier/custom.config"
     }
-
-//    externalDependencies {
-//        versionless = true
-//        allowLatestVersion = [
-//            "com.google.auto.value:auto-value",
-//            "com.android.tools:sdklib",
-//            "com.google.code.findbugs:jsr305",
-//            "com.android.tools.build:manifest-merger",
-//            "com.android.tools:dvlib",
-//            "org.ow2.asm:asm",
-//            "org.ow2.asm:asm-commons",
-//            "com.google.protobuf:protobuf-java",
-//            "commons-codec:commons-codec",
-//            "com.google.errorprone:error_prone_annotations",
-//            "com.google.auto:auto-common",
-//            "com.android.tools:sdk-common",
-//            "com.android.tools.layoutlib:layoutlib-api",
-//            "com.google.guava:guava",
-//            "com.android.tools:common",
-//            "org.apache.httpcomponents:httpcore",
-//            "com.android.tools:repository",
-//            "org.jetbrains.kotlin:kotlin-stdlib",
-//            "org.ow2.asm:asm-tree",
-//            "org.apache.httpcomponents:httpclient",
-//            "org.bouncycastle:bcprov-jdk15on",
-//            "commons-logging:commons-logging",
-//            "com.squareup:javapoet",
-//            "org.jetbrains.kotlin:kotlin-reflect",
-//            "org.checkerframework:checker-compat-qual",
-//            "com.google.code.gson:gson",
-//            "com.android.tools.build:builder-model",
-//            "com.android.tools.ddms:ddmlib",
-//            "org.apache.commons:commons-compress",
-//            "com.android.tools:annotations",
-//            "com.android.tools.build:builder-test-api",
-//            "org.apache.httpcomponents:httpmime",
-//            "androidx.annotation:annotation",
-//        ]
-//        allowAllVersions = [
-//            "org.robolectric:android-all",
-//        ]
-//    }
-
-//    dependencies {
-//        transform project(":dummy-transform")
-//    }
-
-//    libraryBuildConfig = false
 
     extraBuckOpts = [
             "appDebug": [
@@ -283,19 +174,6 @@ okbuck {
             ]
     ]
 
-//    ruleOverrides {
-//        defaultImportLocation = "//tooling/buck-defs:project_targets.bzl"
-//        defaultRuleNamePrefix = "project_"
-//        override {
-//            nativeRuleName = "android_binary"
-//        }
-//    }
-}
-
-afterEvaluate {
-    dependencies {
-//        toolsExtraDepCache deps.external.saxon
-    }
 }
 
 subprojects {

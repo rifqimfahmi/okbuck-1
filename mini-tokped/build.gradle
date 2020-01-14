@@ -24,7 +24,6 @@ android {
         applicationId "com.uber.tkpd"
         versionCode 350000000
         versionName "3.50"
-//        vectorDrawables.useSupportLibrary = vectorDrawable
         resConfigs "en", "id"
 //        ndk {
 //            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
@@ -127,11 +126,6 @@ android {
             dimension "client"
         }
     }
-//
-//    // put Dynamic Feature Modules in dynamic-feature-customerapp.cfg
-//    // to disable dynamic feature, use command option -Pdisable-dynamic-feature
-//    dynamicFeatures = getDynamicFeatureIfEnabled(project)
-//    generateAssetFile(project, dynamicFeatures)
 }
 
 
