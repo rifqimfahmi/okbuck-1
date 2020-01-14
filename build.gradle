@@ -48,8 +48,13 @@ subprojects { project ->
     afterEvaluate {
         if (project.plugins.hasPlugin("java")) {
             addCommonConfigurationForJavaModules(project)
-        } else if (project.plugins.hasPlugin("com.android.application")
-                || project.plugins.hasPlugin("com.android.library")) {
+        } else if (
+            (
+                    project.plugins.hasPlugin("com.android.application") || 
+                    project.plugins.hasPlugin("com.android.library")
+            ) &&
+                    !project.getName().contains("mini-tokped")
+        ) {
             addCommonConfigurationForAndroidModules(project)
         }
 

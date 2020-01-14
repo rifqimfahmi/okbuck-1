@@ -14,7 +14,23 @@ buildscript {
 }
 
 android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        multiDexEnabled = true
+        applicationId "com.uber.tkpd"
+        versionCode 350000000
+        versionName "3.50"
+//        vectorDrawables.useSupportLibrary = vectorDrawable
+        resConfigs "en", "id"
+//        ndk {
+//            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+//        }
+    }
+    
     packagingOptions {
         exclude 'META-INF/**'
         pickFirst '**/armeabi-v7a/libc++_shared.so'
@@ -24,9 +40,6 @@ android {
         pickFirst '**/x86/libjsc.so'
         pickFirst '**/armeabi-v7a/libjsc.so'
     }
-
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']
@@ -53,31 +66,32 @@ android {
         abortOnError false
     }
 
+    signingConfigs {
+        debug {
+            if (project.path.equals(":kotlin-app")) {
+                storeFile project.rootProject.file("config/signing/debug_2.keystore")
+            } else if (project.path.equals(":app")) {
+                storeFile project.file("debug.keystore")
+            } else {
+                storeFile project.rootProject.file("config/signing/debug.keystore")
+            }
+        }
+    }
+    
     buildTypes {
         debug {
             minifyEnabled false
             zipAlignEnabled false
-//            buildConfigField "boolean", "ENABLE_DISTRIBUTION", allowDistribution()
             proguardFiles 'proguard-rules.txt'
             buildConfigField "boolean", "IS_PREINSTALL", "false"
             buildConfigField "String", "PREINSTALL_NAME", "\"\""
             buildConfigField "String", "PREINSTALL_DESC", "\"\""
             buildConfigField "String", "PREINSTALL_SITE", "\"\""
+            signingConfig signingConfigs.debug
         }
-    }
-
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-        multiDexEnabled = true
-        applicationId "com.uber.tkpd"
-        versionCode 350000000
-        versionName "3.50"
-//        vectorDrawables.useSupportLibrary = vectorDrawable
-        resConfigs "en", "id"
-//        ndk {
-//            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-//        }
+        release {
+            signingConfig signingConfigs.debug
+        }
     }
 
     dexOptions {
